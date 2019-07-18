@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.8)
 
 project(RayTracer)
 
+
+
 # From http://stackoverflow.com/questions/31422680/how-to-set-visual-studio-filters-for-nested-sub-directory-using-cmake
 function(assign_source_group)
     foreach(_source IN ITEMS ${ARGN})
@@ -18,7 +20,6 @@ endfunction(assign_source_group)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 
 set(targetDir ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
@@ -40,13 +41,18 @@ set (SOURCES
 )
 
 set (HEADERS
-    include/Test.h
+    src/tests/Test.h
 )
 
-assign_source_group(${SOURCES})
-assign_source_group(${HEADERS})
+if (MSVC)
+    assign_source_group(${SOURCES})
+    assign_source_group(${HEADERS})
+endif ()
 
+find_package(wxWidgets REQUIRED gl core net OPTIONAL_COMPONENTS base)
+include(${wxWidgets_USE_FILE})
 
-add_executable(raytracer ${SOURCES} ${HEADERS})
+set(EXEC_NAME raytracer)
+add_executable(${EXEC_NAME} WIN32 MACOSX_BUNDLE ${SOURCES} ${HEADERS})
 
-target_include_directories(raytracer PUBLIC include)
+target_link_libraries(${EXEC_NAME} ${wxWidgets_LIBRARIES})
