@@ -37,11 +37,31 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif ()
 
 set (SOURCES
-    src/main.cpp
+    src/UserInterface/wxraytracer.cpp
+    src/World/World.cpp
+    src/GeometricObjects/Plane.cpp
+    src/Utilities/Point3D.cpp
+    src/Utilities/Ray.cpp
+    src/Utilities/ShadeRec.cpp
+    src/GeometricObjects/Sphere.cpp
+    src/Tracers/SingleSphere.cpp
+    src/Tracers/MultipleObjects.cpp
+    src/Tracers/RayCaster.cpp
+#    src/main.cpp
 )
 
 set (HEADERS
-    src/tests/Test.h
+    src/UserInterface/wxraytracer.h
+    src/World/World.h
+    src/Utilities/Constants.h
+    src/GeometricObjects/Plane.h
+    src/Utilities/Point3D.h
+    src/Utilities/ShadeRec.h
+    src/GeometricObjects/Sphere.h
+    src/Tracers/SingleSphere.h
+    src/Tracers/MultipleObjects.h
+    src/Tracers/RayCaster.h
+#    src/tests/Test.h
 )
 
 if (MSVC)
