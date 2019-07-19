@@ -41,6 +41,7 @@ set (SOURCES
     src/World/World.cpp
     src/GeometricObjects/Plane.cpp
     src/Utilities/Point3D.cpp
+	src/Utilities/Point2D.cpp
     src/Utilities/Ray.cpp
     src/Utilities/ShadeRec.cpp
     src/GeometricObjects/Sphere.cpp
@@ -70,6 +71,7 @@ set (HEADERS
     src/Utilities/Constants.h
     src/GeometricObjects/Plane.h
     src/Utilities/Point3D.h
+	src/Utilities/Point2D.h
     src/Utilities/ShadeRec.h
     src/GeometricObjects/Sphere.h
     src/Tracers/SingleSphere.h
