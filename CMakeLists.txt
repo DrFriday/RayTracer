@@ -46,8 +46,22 @@ set (SOURCES
     src/GeometricObjects/Sphere.cpp
     src/Tracers/SingleSphere.cpp
     src/Tracers/MultipleObjects.cpp
-    src/Tracers/RayCaster.cpp
-#    src/main.cpp
+    src/Tracers/RayCast.cpp
+    src/Utilities/RGBColor.cpp
+    src/World/ViewPlane.cpp
+    src/Tracers/Tracer.cpp
+    src/GeometricObjects/GeometricObject.cpp
+    src/Cameras/Camera.cpp
+    src/Cameras/Pinhole.cpp
+    src/Utilities/Vector3D.cpp
+    src/Lights/Light.cpp
+    src/Lights/Ambient.cpp
+    src/Lights/Directional.cpp
+    src/Utilities/Normal.cpp
+    src/Materials/Material.cpp
+    src/Materials/Matte.cpp
+    src/BRDFs/BRDF.cpp
+    src/BRDFs/Lambertian.cpp
 )
 
 set (HEADERS
@@ -60,8 +74,23 @@ set (HEADERS
     src/GeometricObjects/Sphere.h
     src/Tracers/SingleSphere.h
     src/Tracers/MultipleObjects.h
-    src/Tracers/RayCaster.h
-#    src/tests/Test.h
+    src/Tracers/RayCast.h
+    src/Utilities/RGBColor.h
+    src/World/ViewPlane.h
+    src/Tracers/Tracer.h
+    src/GeometricObjects/GeometricObject.h
+    src/Cameras/Camera.h
+    src/Cameras/Pinhole.h
+    src/Utilities/Vector3D.h
+    src/Lights/Light.h
+    src/Lights/Ambient.h
+    src/Lights/Directional.h
+    src/Utilities/Normal.h
+    src/Materials/Material.h
+    src/Materials/Matte.h
+    src/BRDFs/BRDF.h
+    src/BRDFs/Lambertian.h
+    src/Utilities/Maths.h
 )
 
 if (MSVC)
@@ -69,7 +98,7 @@ if (MSVC)
     assign_source_group(${HEADERS})
 endif ()
 
-find_package(wxWidgets REQUIRED gl core net OPTIONAL_COMPONENTS base)
+find_package(wxWidgets REQUIRED gl core base OPTIONAL_COMPONENTS net)
 include(${wxWidgets_USE_FILE})
 
 set(EXEC_NAME raytracer)
