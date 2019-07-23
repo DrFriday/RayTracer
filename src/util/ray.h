@@ -1,17 +1,17 @@
 #ifndef _RAY_H_
 #define _RAY_H_
 
-#include "../util/point3.h"
-#include "../util/vec3x1.h"
+#include "point3D.h"
+#include "vector3D.h"
 
 class Ray {
 public:
 
-	Point3 origin;
-	Vec3x1 direction;
+	Point3D origin;
+	Vector3D direction;
 
 	Ray() = default;
-	Ray(const Point3& origin, const Vec3x1& dir);
+	Ray(const Point3D& origin, const Vector3D& dir);
 	Ray(const Ray& ray);
 
 	Ray& operator= (const Ray& rhs);

@@ -1,6 +1,6 @@
 #include "ray.h"
 
-Ray::Ray(const Point3& origin, const Vec3x1& dir)
+Ray::Ray(const Point3D& origin, const Vector3D& dir)
 	: origin(origin)
 	, direction(dir)
 {};

@@ -38,16 +38,32 @@ endif ()
 
 set (SOURCES
     src/ui/wxraytracer.cpp
-    src/core/ray.cpp
+
+	src/util/ray.cpp
+	src/util/matrix.cpp
+	src/util/normal.cpp
+	src/util/point2D.cpp
+	src/util/point3D.cpp
+	src/util/rgb_color.cpp
+	src/util/shade_rec.cpp
+	src/util/vector3D.cpp
 )
 
 set (HEADERS
     src/ui/wxraytracer.h
-    src/core/ray.h
-    src/util/point3.h
-    src/util/vec3x1.h
+	src/core/world.h
 	src/geometry/geometric_object.h
+
+	src/util/constants.h
+	src/util/maths.h
+	src/util/matrix.h
+	src/util/normal.h
+	src/util/point2D.h
+	src/util/point3D.h
+	src/util/ray.h
 	src/util/rgb_color.h
+	src/util/shade_rec.h
+	src/util/vector3D.h
 )
 
 if (MSVC)
