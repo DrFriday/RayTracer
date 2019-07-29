@@ -11,10 +11,10 @@ class World;
 // We need the following as #includes instead of forward class declarations,
 // because we have the objects themselves, not pointers or references
 
-#include "point3D.h"
-#include "normal.h"
-#include "ray.h"
-#include "rgb_color.h"
+#include "Point3D.h"
+#include "Normal.h"
+#include "Ray.h"
+#include "RGBColor.h"
 
 class ShadeRec {
 	public:

@@ -37,33 +37,62 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif ()
 
 set (SOURCES
-    src/ui/wxraytracer.cpp
-
-	src/util/ray.cpp
-	src/util/matrix.cpp
-	src/util/normal.cpp
-	src/util/point2D.cpp
-	src/util/point3D.cpp
-	src/util/rgb_color.cpp
-	src/util/shade_rec.cpp
-	src/util/vector3D.cpp
+    src/UserInterface/wxraytracer.cpp
+    src/World/World.cpp
+    src/GeometricObjects/Plane.cpp
+    src/Utilities/Point3D.cpp
+	src/Utilities/Point2D.cpp
+    src/Utilities/Ray.cpp
+    src/Utilities/ShadeRec.cpp
+    src/GeometricObjects/Sphere.cpp
+    src/Tracers/SingleSphere.cpp
+    src/Tracers/MultipleObjects.cpp
+    src/Tracers/RayCast.cpp
+    src/Utilities/RGBColor.cpp
+    src/World/ViewPlane.cpp
+    src/Tracers/Tracer.cpp
+    src/GeometricObjects/GeometricObject.cpp
+    src/Cameras/Camera.cpp
+    src/Cameras/Pinhole.cpp
+    src/Utilities/Vector3D.cpp
+    src/Lights/Light.cpp
+    src/Lights/Ambient.cpp
+    src/Lights/Directional.cpp
+    src/Utilities/Normal.cpp
+    src/Materials/Material.cpp
+    src/Materials/Matte.cpp
+    src/BRDFs/BRDF.cpp
+    src/BRDFs/Lambertian.cpp
 )
 
 set (HEADERS
-    src/ui/wxraytracer.h
-	src/core/world.h
-	src/geometry/geometric_object.h
-
-	src/util/constants.h
-	src/util/maths.h
-	src/util/matrix.h
-	src/util/normal.h
-	src/util/point2D.h
-	src/util/point3D.h
-	src/util/ray.h
-	src/util/rgb_color.h
-	src/util/shade_rec.h
-	src/util/vector3D.h
+    src/UserInterface/wxraytracer.h
+    src/World/World.h
+    src/Utilities/Constants.h
+    src/GeometricObjects/Plane.h
+    src/Utilities/Point3D.h
+	src/Utilities/Point2D.h
+    src/Utilities/ShadeRec.h
+    src/GeometricObjects/Sphere.h
+    src/Tracers/SingleSphere.h
+    src/Tracers/MultipleObjects.h
+    src/Tracers/RayCast.h
+    src/Utilities/RGBColor.h
+    src/World/ViewPlane.h
+    src/Tracers/Tracer.h
+    src/GeometricObjects/GeometricObject.h
+    src/Cameras/Camera.h
+    src/Cameras/Pinhole.h
+    src/Utilities/Vector3D.h
+    src/Lights/Light.h
+    src/Lights/Ambient.h
+    src/Lights/Directional.h
+    src/Utilities/Normal.h
+    src/Materials/Material.h
+    src/Materials/Matte.h
+    src/BRDFs/BRDF.h
+    src/BRDFs/Lambertian.h
+    src/Utilities/Maths.h
 )
 
 if (MSVC)

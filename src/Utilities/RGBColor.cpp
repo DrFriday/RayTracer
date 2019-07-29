@@ -2,7 +2,7 @@
 
 #include <math.h>
 
-#include "rgb_color.h"
+#include "RGBColor.h"
 
 // -------------------------------------------------------- default constructor
 

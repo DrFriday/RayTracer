@@ -6,8 +6,8 @@
 // the ray tracer is written so that new ShadeRec objects are always constructed
 // using the first constructor or the copy constructor
 
-#include "constants.h"
-#include "shade_rec.h"
+#include "Constants.h"
+#include "ShadeRec.h"
 
 // ------------------------------------------------------------------ constructor
 
