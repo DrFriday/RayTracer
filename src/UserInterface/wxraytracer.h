@@ -11,7 +11,7 @@
  */
 
 #include <wx/wx.h>
-#include "../core/world.h"
+#include "../World/World.h"
 #include <vector>
 
 using namespace std;

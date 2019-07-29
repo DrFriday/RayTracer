@@ -28,7 +28,7 @@ class ShadeRec {
 		int					depth;				// recursion depth
 		float				t;					// ray parameter
 		World&				w;					// World reference
-		RGBColor            color;
+		RGBColor            color;				// For Chapter 3
 				
 		ShadeRec(World& wr);					// constructor
 		

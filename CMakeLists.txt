@@ -37,62 +37,37 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif ()
 
 set (SOURCES
-    src/UserInterface/wxraytracer.cpp
-    src/World/World.cpp
-    src/GeometricObjects/Plane.cpp
-    src/Utilities/Point3D.cpp
-	src/Utilities/Point2D.cpp
-    src/Utilities/Ray.cpp
-    src/Utilities/ShadeRec.cpp
+    src/GeometricObjects/GeometricObject.cpp
     src/GeometricObjects/Sphere.cpp
     src/Tracers/SingleSphere.cpp
-    src/Tracers/MultipleObjects.cpp
-    src/Tracers/RayCast.cpp
-    src/Utilities/RGBColor.cpp
-    src/World/ViewPlane.cpp
     src/Tracers/Tracer.cpp
-    src/GeometricObjects/GeometricObject.cpp
-    src/Cameras/Camera.cpp
-    src/Cameras/Pinhole.cpp
-    src/Utilities/Vector3D.cpp
-    src/Lights/Light.cpp
-    src/Lights/Ambient.cpp
-    src/Lights/Directional.cpp
+    src/UserInterface/wxraytracer.cpp
     src/Utilities/Normal.cpp
-    src/Materials/Material.cpp
-    src/Materials/Matte.cpp
-    src/BRDFs/BRDF.cpp
-    src/BRDFs/Lambertian.cpp
+    src/Utilities/Point3D.cpp
+    src/Utilities/RGBColor.cpp
+    src/Utilities/Ray.cpp
+    src/Utilities/ShadeRec.cpp
+    src/Utilities/Vector3D.cpp
+    src/World/ViewPlane.cpp
+    src/World/World.cpp
 )
 
 set (HEADERS
-    src/UserInterface/wxraytracer.h
-    src/World/World.h
-    src/Utilities/Constants.h
-    src/GeometricObjects/Plane.h
-    src/Utilities/Point3D.h
-	src/Utilities/Point2D.h
-    src/Utilities/ShadeRec.h
+    src/GeometricObjects/GeometricObject.h
     src/GeometricObjects/Sphere.h
     src/Tracers/SingleSphere.h
-    src/Tracers/MultipleObjects.h
-    src/Tracers/RayCast.h
-    src/Utilities/RGBColor.h
-    src/World/ViewPlane.h
     src/Tracers/Tracer.h
-    src/GeometricObjects/GeometricObject.h
-    src/Cameras/Camera.h
-    src/Cameras/Pinhole.h
-    src/Utilities/Vector3D.h
-    src/Lights/Light.h
-    src/Lights/Ambient.h
-    src/Lights/Directional.h
-    src/Utilities/Normal.h
-    src/Materials/Material.h
-    src/Materials/Matte.h
-    src/BRDFs/BRDF.h
-    src/BRDFs/Lambertian.h
+    src/UserInterface/wxraytracer.h
+    src/Utilities/Constants.h
     src/Utilities/Maths.h
+    src/Utilities/Normal.h
+    src/Utilities/Point3D.h
+    src/Utilities/RGBColor.h
+    src/Utilities/Ray.h
+    src/Utilities/ShadeRec.h
+    src/Utilities/Vector3D.h
+    src/World/ViewPlane.h
+    src/World/World.h
 )
 
 if (MSVC)
@@ -107,3 +82,6 @@ set(EXEC_NAME raytracer)
 add_executable(${EXEC_NAME} WIN32 MACOSX_BUNDLE ${SOURCES} ${HEADERS})
 
 target_link_libraries(${EXEC_NAME} ${wxWidgets_LIBRARIES})
+
+# https://stackoverflow.com/questions/7304625/how-do-i-change-the-startup-project-of-a-visual-studio-solution-via-cmake/37994396#37994396
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${EXEC_NAME})
