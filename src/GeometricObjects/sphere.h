@@ -7,7 +7,7 @@
 class Sphere : GeometricObject {
 
 public:
-	bool hit(const Ray& ray, double& min, ShadeRec& sr) const;
+	bool hit(const Ray& ray, double& tmin, ShadeRec& sr) const;
 private:
 	Point3D center;
 	double radius;
