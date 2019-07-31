@@ -18,6 +18,13 @@ World::World()
 void World::build() 
 {
 	// building ...
+	vp.set_hres(200);
+	vp.set_vres(200);
+	vp.set_pixel_size(1.0);
+	vp.set_gamma(1.0);
+
+	background_color = black;
+
 }
 
 void World::render_scene() const 

@@ -6,7 +6,8 @@
 #include "../GeometricObjects/Sphere.h"
 #include "../Tracers/Tracer.h"
 
-class World {
+class World 
+{
 public:
 	ViewPlane vp;
 	RGBColor background_color;

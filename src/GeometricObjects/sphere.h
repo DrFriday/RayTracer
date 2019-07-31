@@ -4,7 +4,8 @@
 #include "GeometricObject.h"
 #include "../Utilities/Point3D.h"
 
-class Sphere : GeometricObject {
+class Sphere : GeometricObject 
+{
 
 public:
 	bool hit(const Ray& ray, double& tmin, ShadeRec& sr) const;

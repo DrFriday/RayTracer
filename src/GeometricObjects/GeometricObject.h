@@ -8,7 +8,8 @@
 class World;
 
 
-class GeometricObject {
+class GeometricObject
+{
 public:
 	virtual bool hit(const Ray& ray, double& min, ShadeRec& sr) const = 0;
 protected:

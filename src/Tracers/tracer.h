@@ -1,7 +1,8 @@
 #ifndef __TRACER__
 #define __TRACER__
 
-class Tracer {
+class Tracer 
+{
 
 };
 
