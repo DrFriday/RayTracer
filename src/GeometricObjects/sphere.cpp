@@ -40,3 +40,14 @@ bool Sphere::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 
 	return false;
 }
+
+
+void Sphere::set_center(const double newCenter)
+{
+	center = newCenter;
+}
+
+void Sphere::set_radius(const double newRadius)
+{
+	radius = newRadius;
+}

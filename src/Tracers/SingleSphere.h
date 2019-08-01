@@ -5,12 +5,9 @@
 
 #include "../World/World.h"
 
-class SingleSphere : Tracer
+class SingleSphere : public Tracer
 {
-private:
-	World world;
-public:
-	SingleSphere(World& w);
+
 };
 
 #endif // __SINGLE_SPHERE__

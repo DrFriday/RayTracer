@@ -4,11 +4,15 @@
 #include "GeometricObject.h"
 #include "../Utilities/Point3D.h"
 
-class Sphere : GeometricObject 
+class Sphere : public GeometricObject 
 {
 
 public:
 	bool hit(const Ray& ray, double& tmin, ShadeRec& sr) const;
+
+	void set_center(const double newCenter);
+	void set_radius(const double newRadius);
+
 private:
 	Point3D center;
 	double radius;

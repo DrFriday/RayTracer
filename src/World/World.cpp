@@ -8,6 +8,8 @@
 
 #include "../Utilities/Ray.h"
 
+#include "../Tracers/SingleSphere.h"
+
 World::World()
 	: vp()
 	, background_color(black)
@@ -24,6 +26,12 @@ void World::build()
 	vp.set_gamma(1.0);
 
 	background_color = black;
+
+	tracer_prt = new SingleSphere(this);
+
+	sphere.set_center(0.0);
+	sphere.set_radius(85.0);
+
 
 }
 
