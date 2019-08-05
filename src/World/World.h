@@ -5,6 +5,7 @@
 #include "../Utilities/RGBColor.h"
 #include "../GeometricObjects/Sphere.h"
 #include "../Tracers/Tracer.h"
+#include "../UserInterface/wxraytracer.h"
 
 class World 
 {
@@ -23,6 +24,11 @@ public:
 	void open_window(const int hres, const int vres) const;
 
 	void display_pixel(const int row, const int column, const RGBColor& color) const;
+
+	void setPaintArea(RenderThread* paintArea);
+
+private:
+	RenderThread* paintArea;
 };
 
 

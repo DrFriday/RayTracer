@@ -7,7 +7,9 @@
 
 class SingleSphere : public Tracer
 {
-
+public:
+	SingleSphere(World* world);
+	RGBColor trace_ray(const Ray& ray) const;
 };
 
 #endif // __SINGLE_SPHERE__

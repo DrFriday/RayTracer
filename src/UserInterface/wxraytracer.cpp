@@ -412,7 +412,7 @@ void RenderCanvas::renderStart(void)
    
    thread = new RenderThread(this, w);
    thread->Create();
-   //w->paintArea = thread;
+   w->setPaintArea(thread);
    thread->SetPriority(20);
    thread->Run();
 }

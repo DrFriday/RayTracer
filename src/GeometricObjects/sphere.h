@@ -11,7 +11,9 @@ public:
 	bool hit(const Ray& ray, double& tmin, ShadeRec& sr) const;
 
 	void set_center(const double newCenter);
+	//Point3D get_center() const;
 	void set_radius(const double newRadius);
+
 
 private:
 	Point3D center;

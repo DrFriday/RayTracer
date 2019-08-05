@@ -1,9 +1,16 @@
 #include "Tracer.h"
+#include "../Utilities/Constants.h"
 
 Tracer::Tracer()
-	: world()
+	: world_ptr()
 {}
 
 Tracer::Tracer(World* world)
-	: world(world)
+	: world_ptr(world)
 {}
+
+RGBColor 
+Tracer::trace_ray(const Ray& ray) const
+{
+	return black;
+}
