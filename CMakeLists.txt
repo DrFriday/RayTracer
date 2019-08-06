@@ -42,6 +42,9 @@ set (SOURCES
     src/Tracers/SingleSphere.cpp
     src/Tracers/Tracer.cpp
     src/UserInterface/wxraytracer.cpp
+	src/UserInterface/RenderThread.cpp
+	src/UserInterface/RenderPixel.cpp
+	src/UserInterface/RenderCanvas.cpp
     src/Utilities/Normal.cpp
     src/Utilities/Point3D.cpp
     src/Utilities/RGBColor.cpp
@@ -58,6 +61,9 @@ set (HEADERS
     src/Tracers/SingleSphere.h
     src/Tracers/Tracer.h
     src/UserInterface/wxraytracer.h
+	src/UserInterface/RenderThread.h
+	src/UserInterface/RenderPixel.h
+	src/UserInterface/RenderCanvas.h
     src/Utilities/Constants.h
     src/Utilities/Maths.h
     src/Utilities/Normal.h
