@@ -4,6 +4,7 @@
 #include <memory>
 
 #include "../Utilities/Ray.h"
+#include "../Utilities/RGBColor.h"
 
 class World;
 

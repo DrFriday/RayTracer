@@ -5,9 +5,6 @@
 #include "../Utilities/Ray.h"
 #include "../Utilities/ShadeRec.h"
 
-class World;
-
-
 class GeometricObject
 {
 public:

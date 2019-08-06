@@ -2,7 +2,7 @@
 #include "../Utilities/Constants.h"
 
 Tracer::Tracer()
-	: world_ptr()
+	: world_ptr(nullptr)
 {}
 
 Tracer::Tracer(World* world)
