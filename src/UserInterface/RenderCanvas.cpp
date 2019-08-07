@@ -3,11 +3,10 @@
 
 #include "RenderCanvas.h"
 #include "RenderPixel.h"
+#include "wxraytracer.h"
 
 #include "main.xpm"
 #include "bg.xpm"
-
-
 
 RenderCanvas::RenderCanvas(wxWindow *parent)
 	: wxScrolledWindow(parent), m_image(NULL), w(NULL), thread(NULL),

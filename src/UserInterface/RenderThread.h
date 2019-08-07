@@ -4,7 +4,11 @@
 #include <wx/wx.h>
 #include <vector>
 
-#include "RenderCanvas.h"
+//#include "RenderCanvas.h"
+#include "RenderPixel.h"
+#include "../World/World.h"
+
+class RenderCanvas;
 
 DECLARE_EVENT_TYPE(wxEVT_RENDER, -1)
 #define ID_RENDER_COMPLETED 100

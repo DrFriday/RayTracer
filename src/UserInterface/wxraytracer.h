@@ -35,6 +35,8 @@ private:
    DECLARE_EVENT_TABLE()
 };
 
+DECLARE_APP(wxraytracerapp);
+
 class wxraytracerFrame : public wxFrame
 {
 public:
@@ -65,7 +67,5 @@ enum
    Menu_Render_Pause,
    Menu_Render_Resume
 };
-
-
 
 #endif
