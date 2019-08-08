@@ -32,6 +32,8 @@ private:
 	std::vector<RenderPixel*> pixels;
 	wxStopWatch* timer;
 	long lastUpdateTime;
+
+	wxEvtHandler eventHandler;
 };
 
 #endif // __RENDER_THREAD__
