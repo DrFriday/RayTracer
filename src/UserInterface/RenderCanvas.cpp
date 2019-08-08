@@ -19,30 +19,34 @@ BEGIN_EVENT_TABLE(RenderCanvas, wxScrolledWindow)
 END_EVENT_TABLE()
 
 RenderCanvas::RenderCanvas(wxWindow *parent)
-	: wxScrolledWindow(parent), m_image(NULL), w(NULL), thread(NULL),
-	timer(NULL), updateTimer(this, ID_RENDER_UPDATE)
+	: wxScrolledWindow(parent),
+	m_image(nullptr),
+	w(nullptr),
+	thread(nullptr),
+	timer(nullptr),
+	updateTimer(this, ID_RENDER_UPDATE)
 {
 	SetOwnBackgroundColour(wxColour(143, 144, 150));
 }
 
 RenderCanvas::~RenderCanvas(void)
 {
-	if (m_image != NULL)
+	if (m_image != nullptr)
 		delete m_image;
 
-	if (thread != NULL)
+	if (thread != nullptr)
 		thread->Delete();
 
-	if (w != NULL)
+	if (w != nullptr)
 		delete w;
 
-	if (timer != NULL)
+	if (timer != nullptr)
 		delete timer;
 }
 
 void RenderCanvas::SetImage(wxImage& image)
 {
-	if (m_image != NULL)
+	if (m_image != nullptr)
 		delete m_image;
 
 	m_image = new wxBitmap(image);
@@ -55,7 +59,7 @@ void RenderCanvas::SetImage(wxImage& image)
 
 wxImage RenderCanvas::GetImage(void)
 {
-	if (m_image != NULL)
+	if (m_image != nullptr)
 		return m_image->ConvertToImage();
 
 	return wxImage();
@@ -63,7 +67,7 @@ wxImage RenderCanvas::GetImage(void)
 
 void RenderCanvas::OnDraw(wxDC& dc)
 {
-	if (m_image != NULL && m_image->IsOk())
+	if (m_image != nullptr && m_image->IsOk())
 		wxBufferedDC bdc(&dc, *m_image);
 }
 
@@ -71,15 +75,15 @@ void RenderCanvas::OnRenderCompleted(wxCommandEvent& event)
 {
 	// Uncomment if not propagating up
 	//this->GetParent()->GetEventHandler()->AddPendingEvent(event);
-	thread = NULL;
+	thread = nullptr;
 
-	if (w != NULL)
+	if (w != nullptr)
 	{
 		delete w;
-		w = NULL;
+		w = nullptr;
 	}
 
-	if (timer != NULL)
+	if (timer != nullptr)
 	{
 		long interval = timer->Time();
 
@@ -88,7 +92,7 @@ void RenderCanvas::OnRenderCompleted(wxCommandEvent& event)
 		wxGetApp().SetStatusText(timeString, 1);
 
 		delete timer;
-		timer = NULL;
+		timer = nullptr;
 	}
 }
 
@@ -122,29 +126,29 @@ void RenderCanvas::OnNewPixel(wxCommandEvent& event)
 
 void RenderCanvas::renderPause(void)
 {
-	if (thread != NULL)
+	if (thread != nullptr)
 		thread->Pause();
 
 	updateTimer.Stop();
 
-	if (timer != NULL)
+	if (timer != nullptr)
 		timer->Pause();
 }
 
 void RenderCanvas::renderResume(void)
 {
-	if (thread != NULL)
+	if (thread != nullptr)
 		thread->Resume();
 
 	updateTimer.Start();
 
-	if (timer != NULL)
+	if (timer != nullptr)
 		timer->Resume();
 }
 
 void RenderCanvas::OnTimerUpdate(wxTimerEvent& event)
 {
-	if (timer == NULL)
+	if (timer == nullptr)
 		return;
 
 	//percent
