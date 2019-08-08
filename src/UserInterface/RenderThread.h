@@ -4,21 +4,13 @@
 #include <wx/wx.h>
 #include <vector>
 
-//#include "RenderCanvas.h"
 #include "RenderPixel.h"
-#include "../World/World.h"
-
-class RenderCanvas;
-
-DECLARE_EVENT_TYPE(wxEVT_RENDER, -1)
-#define ID_RENDER_COMPLETED 100
-#define ID_RENDER_NEWPIXEL  101
-#define ID_RENDER_UPDATE    102
+#include "../Events/Events.h"
 
 class RenderThread : public wxThread
 {
 public:
-	RenderThread(RenderCanvas* c, World* w) : wxThread(), world(w), canvas(c) {}
+	RenderThread(wxEvtHandler* worldHandler, wxEvtHandler* eventHandler);
 	virtual void *Entry();
 	virtual void OnExit();
 	virtual void setPixel(int x, int y, int red, int green, int blue);
@@ -26,14 +18,13 @@ public:
 private:
 	void NotifyCanvas();
 
-	World* world;
-	RenderCanvas* canvas;
+	wxEvtHandler* _worldEventHandler;
+	wxEvtHandler* _parentEventHandler;
 
 	std::vector<RenderPixel*> pixels;
 	wxStopWatch* timer;
 	long lastUpdateTime;
 
-	wxEvtHandler eventHandler;
 };
 
 #endif // __RENDER_THREAD__

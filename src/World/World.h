@@ -5,8 +5,7 @@
 #include "../Utilities/RGBColor.h"
 #include "../GeometricObjects/Sphere.h"
 #include "../Tracers/Tracer.h"
-
-class RenderThread;
+#include "../UserInterface/RenderThread.h"
 
 class World 
 {

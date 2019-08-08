@@ -4,15 +4,12 @@
 #include "RenderThread.h"
 #include "RenderPixel.h"
 
-DEFINE_EVENT_TYPE(wxEVT_RENDER)
-
-BEGIN_EVENT_TABLE(RenderCanvas, wxScrolledWindow)
-	EVT_COMMAND(ID_RENDER_NEWPIXEL, wxEVT_RENDER,
-		RenderCanvas::OnNewPixel)
-	EVT_COMMAND(ID_RENDER_COMPLETED, wxEVT_RENDER,
-		RenderCanvas::OnRenderCompleted)
-	EVT_TIMER(ID_RENDER_UPDATE, RenderCanvas::OnTimerUpdate)
-END_EVENT_TABLE()
+RenderThread::RenderThread(wxEvtHandler* worldHandler
+	, wxEvtHandler* eventHandler)
+	: wxThread()
+	, _worldEventHandler(worldHandler)
+	, _parentEventHandler(eventHandler)
+{}
 
 void RenderThread::NotifyCanvas()
 {
@@ -24,7 +21,7 @@ void RenderThread::NotifyCanvas()
 
 	wxCommandEvent event(wxEVT_RENDER, ID_RENDER_NEWPIXEL);
 	event.SetClientData(pixelsUpdate);
-	canvas->GetEventHandler()->AddPendingEvent(event);
+	_parentEventHandler->AddPendingEvent(event);
 }
 
 void RenderThread::OnExit()
@@ -33,14 +30,11 @@ void RenderThread::OnExit()
 
 	wxCommandEvent event(wxEVT_RENDER, ID_RENDER_COMPLETED);
 
-	canvas->GetEventHandler()->AddPendingEvent(event);
-
-	canvas->GetParent()->GetEventHandler()->AddPendingEvent(event);
+	_parentEventHandler->AddPendingEvent(event);
 }
 
 void RenderThread::setPixel(int x, int y, int red, int green, int blue)
 {
-
 	pixels.push_back(new RenderPixel(x, y, red, green, blue));
 
 	if (timer->Time() - lastUpdateTime > 40)
@@ -54,7 +48,10 @@ void *RenderThread::Entry()
 	lastUpdateTime = 0;
 	timer = new wxStopWatch();
 
-	world->render_scene(); //for bare bones ray tracer only
+	wxCommandEvent event(wxEVT_RENDER, RENDER_START);
+	_worldEventHandler->AddPendingEvent(event);
+
+	//world->render_scene(); //for bare bones ray tracer only
 	//world->camera_ptr->render_scene(*world);
 
 	return NULL;

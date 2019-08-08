@@ -4,8 +4,9 @@
 #include <wx/wx.h>
 
 
-#include "../World/World.h"
 #include "RenderCanvas.h"
+#include "../World/World.h"
+#include "RenderThread.h"
 
 class RenderCanvas : public wxScrolledWindow
 {

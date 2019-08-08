@@ -5,6 +5,7 @@
 #include "bg.xpm"
 
 #include "RenderCanvas.h"
+#include "../Events/Events.h"
 
 
 /******************************************************************************/

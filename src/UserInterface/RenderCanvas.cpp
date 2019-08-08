@@ -4,9 +4,19 @@
 #include "RenderCanvas.h"
 #include "RenderPixel.h"
 #include "wxraytracer.h"
+#include "../Events/Events.h"
 
 #include "main.xpm"
 #include "bg.xpm"
+
+
+BEGIN_EVENT_TABLE(RenderCanvas, wxScrolledWindow)
+	EVT_COMMAND(ID_RENDER_NEWPIXEL, wxEVT_RENDER,
+		RenderCanvas::OnNewPixel)
+	EVT_COMMAND(ID_RENDER_COMPLETED, wxEVT_RENDER,
+		RenderCanvas::OnRenderCompleted)
+	EVT_TIMER(ID_RENDER_UPDATE, RenderCanvas::OnTimerUpdate)
+END_EVENT_TABLE()
 
 RenderCanvas::RenderCanvas(wxWindow *parent)
 	: wxScrolledWindow(parent), m_image(NULL), w(NULL), thread(NULL),
@@ -59,6 +69,8 @@ void RenderCanvas::OnDraw(wxDC& dc)
 
 void RenderCanvas::OnRenderCompleted(wxCommandEvent& event)
 {
+	// Uncomment if not propagating up
+	//this->GetParent()->GetEventHandler()->AddPendingEvent(event);
 	thread = NULL;
 
 	if (w != NULL)
@@ -202,7 +214,7 @@ void RenderCanvas::renderStart(void)
 	//start timer
 	timer = new wxStopWatch();
 
-	thread = new RenderThread(this, w);
+	thread = new RenderThread(this->GetEventHandler(), this->GetEventHandler());
 	thread->Create();
 	w->setPaintArea(thread);
 	thread->SetPriority(20);

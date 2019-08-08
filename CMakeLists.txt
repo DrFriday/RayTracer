@@ -53,6 +53,7 @@ set (SOURCES
     src/Utilities/Vector3D.cpp
     src/World/ViewPlane.cpp
     src/World/World.cpp
+	src/Events/Events.cpp
 )
 
 set (HEADERS
@@ -74,6 +75,7 @@ set (HEADERS
     src/Utilities/Vector3D.h
     src/World/ViewPlane.h
     src/World/World.h
+	src/Events/Events.h
 )
 
 if (MSVC)
