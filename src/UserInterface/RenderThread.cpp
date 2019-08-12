@@ -4,11 +4,13 @@
 #include "RenderThread.h"
 #include "RenderPixel.h"
 
-RenderThread::RenderThread(wxEvtHandler* worldHandler
+RenderThread::RenderThread(std::shared_ptr<wxEvtHandler> worldHandler
 	, wxEvtHandler* eventHandler)
 	: wxThread()
 	, _worldEventHandler(worldHandler)
 	, _parentEventHandler(eventHandler)
+	, pixels()
+	, timer(nullptr)
 {}
 
 void RenderThread::NotifyCanvas()

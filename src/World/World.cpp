@@ -1,21 +1,32 @@
 #include "World.h"
 
-#include "../Utilities/Constants.h"
+#include <wx/wx.h>
 
+#include "../Utilities/Constants.h"
 #include "../Utilities/Vector3D.h"
 #include "../Utilities/Point3D.h"
 #include "../Utilities/Normal.h"
-
 #include "../Utilities/Ray.h"
-
 #include "../Tracers/SingleSphere.h"
+
+#include "../Events/Events.h"
+#include <iostream>
 
 World::World()
 	: vp()
 	, background_color(black)
 	, sphere()
 	, tracer_prt(nullptr)
-{}
+	, _eventHandler()
+{
+	//_eventHandler->Bind(wxEVT_RENDER,
+	//	[](wxCommandEvent&) {
+	//	// Do something useful
+	//}, wxID_EXIT);
+
+	//_eventHandler->Bind(wxEVT_RENDER,);
+	_eventHandler->Bind(wxEVT_RENDER, [](wxCommandEvent&) {}, RENDER_START);
+}
 
 void World::build() 
 {
@@ -71,7 +82,8 @@ World::display_pixel(const int row, const int column, const RGBColor& color) con
 	int x = column;
 	int y = vp.vres - row - 1;
 
-	paintArea->setPixel(x, y, (int)(color.r * 255),
+	paintArea->setPixel(x, y, 
+		(int)(color.r * 255),
 		(int)(color.g * 255),
 		(int)(color.b * 255));
 }
@@ -80,4 +92,16 @@ void
 World::setPaintArea(RenderThread* newPaintArea)
 {
 	paintArea = newPaintArea;
+}
+
+void
+World::OnRenderStart(wxCommandEvent event) const
+{
+	std::cout << "Starting!" << std::endl;
+}
+
+std::shared_ptr<wxEvtHandler>
+World::getEventHandler() const
+{
+	return _eventHandler;
 }

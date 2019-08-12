@@ -1,6 +1,8 @@
 #ifndef __WORLD__
 #define __WORLD__
 
+#include <wx/wx.h>
+
 #include "ViewPlane.h"
 #include "../Utilities/RGBColor.h"
 #include "../GeometricObjects/Sphere.h"
@@ -27,8 +29,13 @@ public:
 
 	void setPaintArea(RenderThread* paintArea);
 
+	void OnRenderStart(wxCommandEvent event) const;
+
+	std::shared_ptr<wxEvtHandler> getEventHandler() const;
+
 private:
 	RenderThread* paintArea;
+	std::shared_ptr<wxEvtHandler> _eventHandler;
 };
 
 

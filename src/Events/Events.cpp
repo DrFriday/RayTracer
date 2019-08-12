@@ -1,3 +1,3 @@
 #include "Events.h"
 
-DEFINE_EVENT_TYPE(wxEVT_RENDER)
+wxDEFINE_EVENT(wxEVT_RENDER, wxCommandEvent);

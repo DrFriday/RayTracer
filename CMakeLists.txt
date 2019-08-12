@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.14)
 
 project(RayTracer)
 
@@ -20,6 +20,7 @@ endfunction(assign_source_group)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_DEBUG_POSTFIX "_d")
 
 set(targetDir ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
@@ -42,9 +43,9 @@ set (SOURCES
     src/Tracers/SingleSphere.cpp
     src/Tracers/Tracer.cpp
     src/UserInterface/wxraytracer.cpp
-	src/UserInterface/RenderThread.cpp
-	src/UserInterface/RenderPixel.cpp
-	src/UserInterface/RenderCanvas.cpp
+    src/UserInterface/RenderThread.cpp
+    src/UserInterface/RenderPixel.cpp
+    src/UserInterface/RenderCanvas.cpp
     src/Utilities/Normal.cpp
     src/Utilities/Point3D.cpp
     src/Utilities/RGBColor.cpp
@@ -53,7 +54,7 @@ set (SOURCES
     src/Utilities/Vector3D.cpp
     src/World/ViewPlane.cpp
     src/World/World.cpp
-	src/Events/Events.cpp
+    src/Events/Events.cpp
 )
 
 set (HEADERS
@@ -62,9 +63,9 @@ set (HEADERS
     src/Tracers/SingleSphere.h
     src/Tracers/Tracer.h
     src/UserInterface/wxraytracer.h
-	src/UserInterface/RenderThread.h
-	src/UserInterface/RenderPixel.h
-	src/UserInterface/RenderCanvas.h
+    src/UserInterface/RenderThread.h
+    src/UserInterface/RenderPixel.h
+    src/UserInterface/RenderCanvas.h
     src/Utilities/Constants.h
     src/Utilities/Maths.h
     src/Utilities/Normal.h
@@ -75,7 +76,7 @@ set (HEADERS
     src/Utilities/Vector3D.h
     src/World/ViewPlane.h
     src/World/World.h
-	src/Events/Events.h
+    src/Events/Events.h
 )
 
 if (MSVC)

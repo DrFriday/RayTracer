@@ -3,7 +3,8 @@
 
 #include<wx/wx.h>
 
-DECLARE_EVENT_TYPE(wxEVT_RENDER, -1)
+//DECLARE_EVENT_TYPE(wxEVT_RENDER, -1)
+wxDECLARE_EVENT(wxEVT_RENDER, wxCommandEvent);
 constexpr auto ID_RENDER_COMPLETED = 100;
 constexpr auto ID_RENDER_NEWPIXEL = 101;
 constexpr auto ID_RENDER_UPDATE = 102;

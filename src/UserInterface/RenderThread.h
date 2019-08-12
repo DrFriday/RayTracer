@@ -10,7 +10,7 @@
 class RenderThread : public wxThread
 {
 public:
-	RenderThread(wxEvtHandler* worldHandler, wxEvtHandler* eventHandler);
+	RenderThread(std::shared_ptr<wxEvtHandler> worldHandler, wxEvtHandler* eventHandler);
 	virtual void *Entry();
 	virtual void OnExit();
 	virtual void setPixel(int x, int y, int red, int green, int blue);
@@ -18,13 +18,12 @@ public:
 private:
 	void NotifyCanvas();
 
-	wxEvtHandler* _worldEventHandler;
+	std::shared_ptr<wxEvtHandler> _worldEventHandler;
 	wxEvtHandler* _parentEventHandler;
 
 	std::vector<RenderPixel*> pixels;
 	wxStopWatch* timer;
 	long lastUpdateTime;
-
 };
 
 #endif // __RENDER_THREAD__
