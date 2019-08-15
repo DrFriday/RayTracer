@@ -3,6 +3,7 @@
 
 #include "RenderCanvas.h"
 #include "RenderPixel.h"
+#include "RenderThread.h"
 #include "wxraytracer.h"
 #include "../Events/Events.h"
 
@@ -218,7 +219,7 @@ void RenderCanvas::renderStart(void)
 	//start timer
 	timer = new wxStopWatch();
 
-	thread = new RenderThread(w->getEventHandler(), this->GetEventHandler());
+	thread = new RenderThread(w, this->GetEventHandler());
 	thread->Create();
 	w->setPaintArea(thread);
 	thread->SetPriority(20);

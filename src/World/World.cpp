@@ -9,6 +9,8 @@
 #include "../Utilities/Ray.h"
 #include "../Tracers/SingleSphere.h"
 
+#include "../UserInterface/RenderThread.h"
+
 #include "../Events/Events.h"
 #include <iostream>
 
@@ -17,7 +19,7 @@ World::World()
 	, background_color(black)
 	, sphere()
 	, tracer_prt(nullptr)
-	, _eventHandler()
+	, _eventHandler(std::make_shared<wxEvtHandler>())
 {
 	//_eventHandler->Bind(wxEVT_RENDER,
 	//	[](wxCommandEvent&) {
@@ -25,7 +27,9 @@ World::World()
 	//}, wxID_EXIT);
 
 	//_eventHandler->Bind(wxEVT_RENDER,);
-	_eventHandler->Bind(wxEVT_RENDER, [](wxCommandEvent&) {}, RENDER_START);
+	_eventHandler->Bind(wxEVT_RENDER, [&](wxCommandEvent&) {
+		this->render_scene();
+	});
 }
 
 void World::build() 

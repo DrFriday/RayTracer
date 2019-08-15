@@ -4,10 +4,9 @@
 #include "RenderThread.h"
 #include "RenderPixel.h"
 
-RenderThread::RenderThread(std::shared_ptr<wxEvtHandler> worldHandler
-	, wxEvtHandler* eventHandler)
+RenderThread::RenderThread(World* world, wxEvtHandler* eventHandler)
 	: wxThread()
-	, _worldEventHandler(worldHandler)
+	, _world(world)
 	, _parentEventHandler(eventHandler)
 	, pixels()
 	, timer(nullptr)
@@ -51,8 +50,8 @@ void *RenderThread::Entry()
 	timer = new wxStopWatch();
 
 	wxCommandEvent event(wxEVT_RENDER, RENDER_START);
-	_worldEventHandler->AddPendingEvent(event);
 
+	_world->render_scene();
 	//world->render_scene(); //for bare bones ray tracer only
 	//world->camera_ptr->render_scene(*world);
 

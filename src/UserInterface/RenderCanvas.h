@@ -3,8 +3,6 @@
 
 #include <wx/wx.h>
 
-
-#include "RenderCanvas.h"
 #include "../World/World.h"
 #include "RenderThread.h"
 

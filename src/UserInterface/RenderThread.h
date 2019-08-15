@@ -7,10 +7,12 @@
 #include "RenderPixel.h"
 #include "../Events/Events.h"
 
+#include "../World/World.h"
+
 class RenderThread : public wxThread
 {
 public:
-	RenderThread(std::shared_ptr<wxEvtHandler> worldHandler, wxEvtHandler* eventHandler);
+	RenderThread(World* world, wxEvtHandler* eventHandler);
 	virtual void *Entry();
 	virtual void OnExit();
 	virtual void setPixel(int x, int y, int red, int green, int blue);
@@ -18,7 +20,7 @@ public:
 private:
 	void NotifyCanvas();
 
-	std::shared_ptr<wxEvtHandler> _worldEventHandler;
+	World* _world;
 	wxEvtHandler* _parentEventHandler;
 
 	std::vector<RenderPixel*> pixels;
