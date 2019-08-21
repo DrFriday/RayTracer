@@ -4,7 +4,7 @@
 #include "RenderCanvas.h"
 #include "RenderPixel.h"
 #include "RenderThread.h"
-#include "wxraytracer.h"
+#include "RenderApp.h"
 #include "../Events/Events.h"
 
 #include "main.xpm"

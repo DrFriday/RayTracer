@@ -19,20 +19,10 @@ World::World()
 	, background_color(black)
 	, sphere()
 	, tracer_prt(nullptr)
-	, _eventHandler(std::make_shared<wxEvtHandler>())
-{
-	//_eventHandler->Bind(wxEVT_RENDER,
-	//	[](wxCommandEvent&) {
-	//	// Do something useful
-	//}, wxID_EXIT);
+{}
 
-	//_eventHandler->Bind(wxEVT_RENDER,);
-	_eventHandler->Bind(wxEVT_RENDER, [&](wxCommandEvent&) {
-		this->render_scene();
-	});
-}
-
-void World::build() 
+void 
+World::build() 
 {
 	// building ...
 	vp.set_hres(200);
@@ -48,7 +38,8 @@ void World::build()
 	sphere.set_radius(85.0);
 }
 
-void World::render_scene() const 
+void 
+World::render_scene() const 
 {
 	RGBColor pixel_color;
 	Ray ray;
@@ -75,7 +66,8 @@ void World::render_scene() const
 	}
 }
 
-void World::open_window(const int hres, const int vres) const 
+void 
+World::open_window(const int hres, const int vres) const 
 {
 	// opening ...
 }
@@ -96,16 +88,4 @@ void
 World::setPaintArea(RenderThread* newPaintArea)
 {
 	paintArea = newPaintArea;
-}
-
-void
-World::OnRenderStart(wxCommandEvent event) const
-{
-	std::cout << "Starting!" << std::endl;
-}
-
-std::shared_ptr<wxEvtHandler>
-World::getEventHandler() const
-{
-	return _eventHandler;
 }

@@ -30,13 +30,8 @@ public:
 
 	void setPaintArea(RenderThread* paintArea);
 
-	void OnRenderStart(wxCommandEvent event) const;
-
-	std::shared_ptr<wxEvtHandler> getEventHandler() const;
-
 private:
 	RenderThread* paintArea;
-	std::shared_ptr<wxEvtHandler> _eventHandler;
 };
 
 
