@@ -9,10 +9,12 @@
 
 #include "../World/World.h"
 
+class RenderCanvas;
+
 class RenderThread : public wxThread
 {
 public:
-	RenderThread(World* world, wxEvtHandler* eventHandler);
+	RenderThread(World* world, RenderCanvas* canvas);
 	virtual void *Entry();
 	virtual void OnExit();
 	virtual void setPixel(int x, int y, int red, int green, int blue);
@@ -21,7 +23,7 @@ private:
 	void NotifyCanvas();
 
 	World* _world;
-	wxEvtHandler* _parentEventHandler;
+	RenderCanvas* _canvas;
 
 	std::vector<RenderPixel*> pixels;
 	wxStopWatch* timer;

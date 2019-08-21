@@ -3,11 +3,12 @@
 
 #include "RenderThread.h"
 #include "RenderPixel.h"
+#include "RenderCanvas.h"
 
-RenderThread::RenderThread(World* world, wxEvtHandler* eventHandler)
+RenderThread::RenderThread(World* world, RenderCanvas* canvas)
 	: wxThread()
 	, _world(world)
-	, _parentEventHandler(eventHandler)
+	, _canvas(canvas)
 	, pixels()
 	, timer(nullptr)
 {}
@@ -22,7 +23,8 @@ void RenderThread::NotifyCanvas()
 
 	wxCommandEvent event(wxEVT_RENDER, ID_RENDER_NEWPIXEL);
 	event.SetClientData(pixelsUpdate);
-	_parentEventHandler->AddPendingEvent(event);
+
+	_canvas->GetEventHandler()->AddPendingEvent(event);
 }
 
 void RenderThread::OnExit()
@@ -31,7 +33,8 @@ void RenderThread::OnExit()
 
 	wxCommandEvent event(wxEVT_RENDER, ID_RENDER_COMPLETED);
 
-	_parentEventHandler->AddPendingEvent(event);
+	_canvas->GetEventHandler()->AddPendingEvent(event);
+	_canvas->GetParent()->GetEventHandler()->AddPendingEvent(event);
 }
 
 void RenderThread::setPixel(int x, int y, int red, int green, int blue)

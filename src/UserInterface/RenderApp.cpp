@@ -10,7 +10,7 @@ RenderApp::OnInit()
 	frame = new RenderFrame(wxPoint(200, 200), wxSize(700, 500));
 	frame->Centre();
 	frame->Show(true);
-	SetTopWindow(frame.get());
+	SetTopWindow(frame);
 	return true;
 }
 

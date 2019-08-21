@@ -219,7 +219,7 @@ void RenderCanvas::renderStart(void)
 	//start timer
 	timer = new wxStopWatch();
 
-	thread = new RenderThread(w, this->GetEventHandler());
+	thread = new RenderThread(w, this);
 	thread->Create();
 	w->setPaintArea(thread);
 	thread->SetPriority(20);
