@@ -19,7 +19,7 @@ public:
 private:
 	Point3D point;
 	Normal normal;
-	static const double kEpsilon;
+	//static const double kEpsilon;
 };
 
 
