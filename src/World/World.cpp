@@ -8,6 +8,7 @@
 #include "../Utilities/Normal.h"
 #include "../Utilities/Ray.h"
 #include "../Tracers/SingleSphere.h"
+#include "../Tracers/MultipleObjects.h"
 
 #include "../UserInterface/RenderThread.h"
 
@@ -32,10 +33,22 @@ World::build()
 
 	background_color = black;
 
-	tracer_prt = new SingleSphere(this);
+	//tracer_prt = new SingleSphere(this);
+	tracer_prt = new MultipleObjects(this);
 
-	sphere.set_center(0.0);
-	sphere.set_radius(85.0);
+	auto sphere = new Sphere();
+	sphere->set_center(0.0);
+	sphere->set_radius(85.0);
+	sphere->set_color(white);
+
+	add_object(sphere);
+
+
+
+
+
+	//sphere.set_center(0.0);
+	//sphere.set_radius(85.0);
 }
 
 void 
@@ -88,4 +101,30 @@ void
 World::setPaintArea(RenderThread* newPaintArea)
 {
 	paintArea = newPaintArea;
+}
+
+void
+World::add_object(GeometricObject* object_ptr)
+{
+	objects.push_back(object_ptr);
+}
+
+ShadeRec
+World::hit_bare_bones_objects(const Ray& ray) const
+{
+	ShadeRec sr(*this);
+	double t;
+	double tmin = kHugeValue;
+
+	for (auto object : objects)
+	{
+		if (object->hit(ray, t, sr) && t < tmin)
+		{
+			sr.hit_an_object = true;
+			sr.color = object->get_color(); 
+			tmin = t;
+		}
+	}
+
+	return sr;
 }

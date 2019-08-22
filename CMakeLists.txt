@@ -42,6 +42,7 @@ set (SOURCES
     src/GeometricObjects/Sphere.cpp
     src/Tracers/SingleSphere.cpp
     src/Tracers/Tracer.cpp
+	src/Tracers/MultipleObjects.cpp
 #    src/UserInterface/wxraytracer.cpp
     src/UserInterface/RenderThread.cpp
     src/UserInterface/RenderPixel.cpp
@@ -64,6 +65,7 @@ set (HEADERS
     src/GeometricObjects/Sphere.h
     src/Tracers/SingleSphere.h
     src/Tracers/Tracer.h
+	src/Tracers/MultipleObjects.h
  #   src/UserInterface/wxraytracer.h
     src/UserInterface/RenderThread.h
     src/UserInterface/RenderPixel.h
