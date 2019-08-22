@@ -40,10 +40,10 @@ endif ()
 set (SOURCES
     src/GeometricObjects/GeometricObject.cpp
     src/GeometricObjects/Sphere.cpp
+	src/GeometricObjects/Plane.cpp
     src/Tracers/SingleSphere.cpp
     src/Tracers/Tracer.cpp
 	src/Tracers/MultipleObjects.cpp
-#    src/UserInterface/wxraytracer.cpp
     src/UserInterface/RenderThread.cpp
     src/UserInterface/RenderPixel.cpp
     src/UserInterface/RenderCanvas.cpp
@@ -63,10 +63,10 @@ set (SOURCES
 set (HEADERS
     src/GeometricObjects/GeometricObject.h
     src/GeometricObjects/Sphere.h
+	src/GeometricObjects/Plane.h
     src/Tracers/SingleSphere.h
     src/Tracers/Tracer.h
 	src/Tracers/MultipleObjects.h
- #   src/UserInterface/wxraytracer.h
     src/UserInterface/RenderThread.h
     src/UserInterface/RenderPixel.h
     src/UserInterface/RenderCanvas.h
