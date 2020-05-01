@@ -1,8 +1,8 @@
-#ifndef __WORLD__
-#define __WORLD__
+#pragma once
 
 #include <wx/wx.h>
 #include <vector>
+#include <memory>
 
 #include "ViewPlane.h"
 #include "../Utilities/RGBColor.h"
@@ -47,6 +47,3 @@ public:
 private:
 	RenderThread* paintArea;
 };
-
-
-#endif
