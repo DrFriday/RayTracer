@@ -47,6 +47,11 @@ void Sphere::set_center(const double newCenter)
 	center = newCenter;
 }
 
+void Sphere::set_center(const Point3D newCenter)
+{
+	center = newCenter;
+}
+
 void Sphere::set_radius(const double newRadius)
 {
 	radius = newRadius;

@@ -11,7 +11,7 @@
 class Plane : public GeometricObject
 {
 public:
-	Plane();
+	Plane() = default;
 	Plane(const Point3D, const Normal);
 
 	virtual bool
