@@ -28,6 +28,8 @@ RenderCanvas::RenderCanvas(wxWindow *parent)
 	updateTimer(this, ID_RENDER_UPDATE)
 {
 	SetOwnBackgroundColour(wxColour(143, 144, 150));
+
+	//Bind(wxEVT_RENDER, &RenderCanvas::OnNewPixel, th)
 }
 
 RenderCanvas::~RenderCanvas(void)
