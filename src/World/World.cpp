@@ -38,13 +38,18 @@ World::build()
 
 	auto sphere = new Sphere();
 	sphere->set_center(0.0);
-	sphere->set_radius(85.0);
+	sphere->set_radius(20.0);
 	sphere->set_color(white);
 
 	add_object(sphere);
 
 
+	auto sphere2 = new Sphere();
+	sphere2->set_center(Point3D(20, 0, 50));
+	sphere2->set_radius(20.0);
+	sphere2->set_color(red);
 
+	add_object(sphere2);
 
 
 	//sphere.set_center(0.0);
@@ -90,6 +95,9 @@ World::display_pixel(const int row, const int column, const RGBColor& color) con
 {
 	int x = column;
 	int y = vp.vres - row - 1;
+
+	/*if (vp.gamma != 1.0)
+		color = color.powc(vp.inv_gamma);*/
 
 	paintArea->setPixel(x, y, 
 		(int)(color.r * 255),
