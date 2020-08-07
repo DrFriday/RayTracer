@@ -1,4 +1,6 @@
-# Ray Tracer 
+# Ray Tracer
+
+![](renders/progress_8-6-20.jpg)
 
 This is a ray tracer that follows [Ray Tracing from the Ground Up (1st Edition) by Kevin Suffern](https://www.crcpress.com/Ray-Tracing-from-the-Ground-Up/Suffern/p/book/9781568812724).
 
@@ -19,8 +21,8 @@ Hopefully I'll be able to figure out a way to make it included in the project's 
 ## How to build
 
 Runt the following
-    
-    mkdir build
+  
+ mkdir build
 
     cd build
 
