@@ -9,7 +9,7 @@ class SingleSphere : public Tracer
 {
 public:
 	SingleSphere(World* world);
-	RGBColor trace_ray(const Ray& ray) const;
+	RGBColor trace_ray(const Ray& ray) const override;
 };
 
 #endif // __SINGLE_SPHERE__
