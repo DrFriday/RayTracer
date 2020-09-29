@@ -1,5 +1,6 @@
 #include "Sphere.h"
 #include "../Utilities/Constants.h"
+#include <valarray>
 
 bool Sphere::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 	double t;
@@ -18,7 +19,7 @@ bool Sphere::hit(const Ray& ray, double& tmin, ShadeRec& sr) const {
 	// discriminant > 0.0, two real roots, has plus and minus
 	else
 	{
-        double e = sqrt(discriminant);
+        double e = std::sqrt(discriminant);
 		double denom = 2.0 * a;
 		t = (-b - e) / denom; // smaller root
 
